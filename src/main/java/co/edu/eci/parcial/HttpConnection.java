@@ -48,11 +48,13 @@ public class HttpConnection {
     }
 
     private static String RRalgoritm(){
-        String server = servers.get(CURRENT_SERVER);
+        String server;
         if(CURRENT_SERVER == 0){
             CURRENT_SERVER = 1;
+            server = servers.get(CURRENT_SERVER);
         }else {
             CURRENT_SERVER = 0;
+            server = servers.get(CURRENT_SERVER);
         }
         return server;
     }
