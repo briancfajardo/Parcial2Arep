@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>Parcial corte 2 Camilo Fajardo</h1>
+<form action="/linearsearch">
+    <h3>Linear Search</h3>
+    <label for="linear-list">Lista de Elementos:</label><br>
+    <input type="text" id="linear-list" name="name" value=""><br><br>
+    <label for="linear-value">Elemento que desea buscar:</label><br>
+    <input type="text" id="linear-value" name="name" value=""><br><br>
+    <input type="button" value="Submit" onclick="loadGetLinear()">
+</form>
+<div id="getresplinear"></div>
+
+<form action="/binarysearch">
+    <h3>Binary Search</h3>
+    <label for="binary-list">Lista de Elementos:</label><br>
+    <input type="text" id="binary-list" name="name" value=""><br><br>
+    <label for="binary-list">Elemento que desea buscar:</label><br>
+    <input type="text" id="binary-value" name="name" value=""><br><br>
+    <input type="button" value="Submit" onclick="loadGetBinary()">
+</form>
+<div id="getrespbinary"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
