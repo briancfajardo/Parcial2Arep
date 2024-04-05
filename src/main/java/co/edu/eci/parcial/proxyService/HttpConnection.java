@@ -1,20 +1,29 @@
-package co.edu.eci.parcial;
+package co.edu.eci.parcial.proxyService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Clase encargada de realizar las peticiones a los math service usando un balanceador de carga Round Robin
+ */
 public class HttpConnection {
 
     private static final String USER_AGENT = "Mozilla/5.0";
     private static int CURRENT_SERVER = 0;
-    private static List<String>servers = Arrays.asList("http://ec2-34-236-155-176.compute-1.amazonaws.com:8080", "http://ec2-52-91-100-168.compute-1.amazonaws.com:8080");
+    private static List<String>servers = Arrays.asList("http://ec2-54-209-44-216.compute-1.amazonaws.com:8080",
+            "http://ec2-34-227-10-212.compute-1.amazonaws.com:8080");
 
+    /**
+     * Método que realiza la conexión con el servidor correspondiente, recibe su respuesta y la retorna.
+     * @param op Método de búsqueda que se desea emplear para buscar un valor en un arreglo junto con los valores
+     * @return Respuesta del servidor
+     * @throws IOException Se lanza cuando hay un problema en la conexión
+     */
     public static String RRInvoker(String op) throws IOException {
         String server = RRalgoritm();
         URL obj = new URL(server+op);
@@ -47,6 +56,10 @@ public class HttpConnection {
         return "Mala petición";
     }
 
+    /**
+     * Método que realiza la asignación de servidores según corresponda usando el algoritmo de balanceo de carga round robin
+     * @return dirección del servidor asignado
+     */
     private static String RRalgoritm(){
         String server;
         if(CURRENT_SERVER == 0){
